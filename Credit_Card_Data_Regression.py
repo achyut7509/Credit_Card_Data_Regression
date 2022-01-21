@@ -58,3 +58,39 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25 , ran
 from sklearn.linear_model import LogisticRegression
 logistic_model = LogisticRegression()
 logistic_model.fit(X_train,y_train)
+
+# MODEL TESTING
+    
+    ## TRAINING DATA
+    
+y_predict_train = logistic_model.predict(X_train)
+y_predict_train
+
+    ## TEST DATA
+    
+y_predict_test = logistic_model.predict(X_test)
+y_predict_test
+
+# MODEL EVALUATION
+
+from sklearn.metrics import accuracy_score,precision_score,recall_score,confusion_matrix,classification_report
+
+    ## TRAINING DATA
+
+print('TRAINING DATA')
+print('--------------------------------------------------------\n')
+print('Accuracy Score           :',accuracy_score(y_train,y_predict_train))  # Accuracy = 0.78
+print('Precision Score          :',precision_score(y_train,y_predict_train))
+print('Recall Score             :',recall_score(y_train, y_predict_train))
+print('Confusion Matrix         :\n',confusion_matrix(y_train,y_predict_train))
+print('Classification Report    :\n',classification_report(y_train,y_predict_train))
+
+    ## TEST DATA
+    
+print('TEST DATA')
+print('--------------------------------------------------------\n')
+print('Accuracy Score           :',accuracy_score(y_test,y_predict_test))  # Accuracy = 0.778
+print('Precision Score          :',precision_score(y_test,y_predict_test))
+print('Recall Score             :',recall_score(y_test, y_predict_test))
+print('Confusion Matrix         :\n',confusion_matrix(y_test,y_predict_test))
+print('Classification Report    :\n',classification_report(y_test,y_predict_test))
